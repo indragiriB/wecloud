@@ -3,15 +3,15 @@ import { asset } from '../lib/asset'
 
 /**
  * Project image. With no `src` it shows a dot-matrix placeholder with crop
- * marks. With a `src` the picture sits under a frosted film that clears on
- * hover (only on devices that can hover, so touch screens always see it sharp).
+ * marks. With a `src` it shows the picture, cropped to fit.
  */
 export default function ProjectImage({
   src,
   alt,
   ratio = '16 / 10',
-  size = '1600 × 1000',
+  size = '1600 × 800',
   round = false,
+  hint = 'placeholder',
 }) {
   const cls = `shot${src ? ' has-img' : ''}${round ? ' round' : ''}`
 
@@ -24,7 +24,7 @@ export default function ProjectImage({
   }
 
   return (
-    <div className={cls} style={{ aspectRatio: ratio }} role="img" aria-label={`${alt} (placeholder)`}>
+    <div className={cls} style={{ aspectRatio: ratio }} role="img" aria-label={`${alt} (${hint})`}>
       <i className="cm tl" />
       <i className="cm tr" />
       <i className="cm bl" />

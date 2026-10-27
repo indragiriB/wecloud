@@ -1,11 +1,12 @@
 import { useRef } from 'react'
 import { useBackdrop } from '../hooks/useBackdrop'
 
-// One waypoint per section (home, work, about, contact).
+// One waypoint per section (home, work, services, about, contact).
 const STOPS = [
   { x: 74, y: 34, s: 1 },
   { x: 10, y: 56, s: 0.8 },
-  { x: 90, y: 40, s: 0.95 },
+  { x: 92, y: 50, s: 1.1 },
+  { x: 6, y: 74, s: 0.9 },
   { x: 50, y: 72, s: 1.5 },
 ]
 

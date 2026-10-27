@@ -4,8 +4,8 @@ import DotClock from '../components/DotClock'
 
 export default function Hero({ site }) {
   const ref = useRef(null)
+  const { ui } = site
   const lines = site.name.trim().split(/\s+/).join('\n')
-  const tz = site.timezone
 
   return (
     <section id="home" className="hero" ref={ref} aria-labelledby="hero-title">
@@ -26,18 +26,18 @@ export default function Hero({ site }) {
             <p className="blurb">{site.intro}</p>
             <div className="cta">
               <a className="btn btn-red" href="#work">
-                View my work
+                {ui.viewWork}
               </a>
               <a className="btn" href="#contact">
-                Get in touch
+                {ui.getInTouch}
               </a>
             </div>
           </div>
 
-          <aside className="lens-col" aria-label="At a glance">
+          <aside className="lens-col" aria-label={ui.atAGlance}>
             <div className="lens glass">
-              <DotClock timeZone={tz} />
-              <p className="lens-cap">{tz.replace(/_/g, ' ')}</p>
+              <DotClock timeZone={site.timezone} />
+              <p className="lens-cap">{site.hero.clockCaption}</p>
             </div>
             <dl className="facts glass">
               {site.hero.facts.map(([k, v]) => (

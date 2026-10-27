@@ -2,10 +2,16 @@ import ProjectImage from '../components/ProjectImage'
 import SectionHead from '../components/SectionHead'
 import { useActiveSection } from '../hooks/useActiveSection'
 
-function Project({ p }) {
+function Project({ p, ui }) {
   return (
     <li id={`p-${p.id}`} className="proj glass">
-      <ProjectImage src={p.image} alt={`${p.title} screenshot`} />
+      <ProjectImage
+        src={p.image}
+        alt={p.imageAlt || p.title}
+        ratio="32 / 15"
+        size="1600 × 800"
+        hint={ui.placeholder}
+      />
       <div className="proj-body">
         <div className="proj-head">
           <h3>{p.title}</h3>
@@ -17,9 +23,9 @@ function Project({ p }) {
         <div className="proj-text">
           <p>{p.description}</p>
           <p className="proj-role">
-            <span>Role</span> {p.role}
+            <span>{ui.role}</span> {p.role}
           </p>
-          <ul className="chips" aria-label="Built with">
+          <ul className="chips" aria-label={ui.builtWith}>
             {p.tags.map((t) => (
               <li key={t}>{t}</li>
             ))}
@@ -27,12 +33,12 @@ function Project({ p }) {
           <div className="links">
             {p.links.live && (
               <a className="btn btn-sm" href={p.links.live} target="_blank" rel="noreferrer noopener">
-                Live site ↗<span className="sr-only"> for {p.title}</span>
+                {ui.live} ↗<span className="sr-only"> {ui.for} {p.title}</span>
               </a>
             )}
             {p.links.code && (
               <a className="btn btn-sm" href={p.links.code} target="_blank" rel="noreferrer noopener">
-                Source ↗<span className="sr-only"> for {p.title}</span>
+                {ui.source} ↗<span className="sr-only"> {ui.for} {p.title}</span>
               </a>
             )}
           </div>
@@ -43,6 +49,7 @@ function Project({ p }) {
 }
 
 export default function Work({ site }) {
+  const { ui } = site
   const n = site.projects.length
   const ids = site.projects.map((p) => `p-${p.id}`)
   const active = useActiveSection(ids)
@@ -50,14 +57,9 @@ export default function Work({ site }) {
   return (
     <section id="work" className="section" aria-labelledby="work-title">
       <div className="wrap">
-        <SectionHead
-          id="work-title"
-          title="Work"
-          label="Selected work"
-          meta={`${n} selected ${n === 1 ? 'project' : 'projects'}`}
-        />
+        <SectionHead id="work-title" title="Proyek" label="Proyek pilihan" meta={`${n} proyek pilihan`} />
         <div className="work-grid">
-          <nav className="index glass" aria-label="Jump to project">
+          <nav className="index glass" aria-label={ui.jumpTo}>
             <ul>
               {site.projects.map((p) => (
                 <li key={p.id}>
@@ -72,7 +74,7 @@ export default function Work({ site }) {
           </nav>
           <ol className="projects">
             {site.projects.map((p) => (
-              <Project key={p.id} p={p} />
+              <Project key={p.id} p={p} ui={ui} />
             ))}
           </ol>
         </div>

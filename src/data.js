@@ -1,143 +1,197 @@
 // ─────────────────────────────────────────────────────────────
-//  EDIT THIS FILE. Everything on the site comes from here.
+//  EDIT FILE INI. Semua isi situs berasal dari sini.
+//  Teks sudah dalam Bahasa Indonesia; ganti saja kalau perlu.
 // ─────────────────────────────────────────────────────────────
 
 const site = {
-  // Shown in the big dot-matrix headline. Each word goes on its own line.
-  // Letters, numbers and basic punctuation are supported.
-  name: 'Your Name',
-  initials: 'YN',
-  role: 'Frontend developer and interface designer',
+  // Tampil sebagai tulisan titik-titik besar di hero. Tiap kata satu baris.
+  name: 'We Cloud',
+  initials: 'WC',
+  role: 'Jasa pembuatan website dan aplikasi',
   intro:
-    'I build fast, accessible websites and apps, and I care about the small details that make them feel considered.',
+    'Dari Solo, kami membuat website dan aplikasi yang cepat, rapi, dan mudah dipakai, untuk bisnis, komunitas, dan organisasi.',
 
-  // The clock in the hero shows this timezone (IANA name, e.g. "America/New_York").
-  timezone: 'UTC',
+  // Jam di hero memakai zona waktu ini (nama IANA).
+  timezone: 'Asia/Jakarta',
 
   hero: {
-    status: 'Open to work',
+    status: 'Menerima proyek baru',
+    clockCaption: 'Solo, WIB',
     facts: [
-      ['Based in', 'City, Country'],
-      ['Focus', 'UI engineering'],
-      ['Stack', 'React, TypeScript, CSS'],
+      ['Berbasis di', 'Solo, Jawa Tengah'],
+      ['Layanan', 'Website dan aplikasi'],
+      ['Teknologi', 'React, TypeScript, Supabase'],
     ],
   },
 
   nav: [
-    { id: 'home', label: 'Home' },
-    { id: 'work', label: 'Work' },
-    { id: 'about', label: 'About' },
-    { id: 'contact', label: 'Contact' },
+    { id: 'home', label: 'Beranda' },
+    { id: 'work', label: 'Proyek' },
+    { id: 'services', label: 'Layanan' },
+    { id: 'about', label: 'Tentang' },
+    { id: 'contact', label: 'Kontak' },
   ],
 
-  // ── Projects ────────────────────────────────────────────────
-  // `image`: leave as null to show the placeholder. To use a real image,
-  // put the file in /public/projects/ and set image: '/projects/shop.jpg'.
+  // Teks antarmuka (tombol, label aksesibilitas).
+  ui: {
+    skip: 'Lewati ke proyek',
+    backToTop: 'Kembali ke atas',
+    toDark: 'Ganti ke mode gelap',
+    toLight: 'Ganti ke mode terang',
+    menu: 'Menu',
+    close: 'Tutup',
+    primaryNav: 'Navigasi utama',
+    mobileNav: 'Navigasi seluler',
+    viewWork: 'Lihat proyek',
+    getInTouch: 'Hubungi kami',
+    atAGlance: 'Sekilas',
+    jumpTo: 'Loncat ke proyek',
+    role: 'Peran',
+    builtWith: 'Dibuat dengan',
+    live: 'Lihat situs',
+    source: 'Kode',
+    for: 'untuk',
+    suitedFor: 'Cocok untuk',
+    copy: 'Salin email',
+    copied: 'Tersalin',
+    copyFailed: 'Gagal menyalin',
+    copiedAnnounce: 'Alamat email disalin',
+    copyFailedAnnounce: 'Tidak bisa menyalin',
+    writeEmail: 'Kirim email',
+    whatsapp: 'Chat WhatsApp',
+    placeholder: 'gambar contoh',
+  },
+
+  // ── Proyek pilihan ──────────────────────────────────────────
+  // image: file di /public/projects/. null = tampil placeholder.
   projects: [
     {
-      id: 'storefront',
-      title: 'Storefront redesign',
+      id: 'monote',
+      title: 'Monote',
       year: '2026',
-      role: 'Design and development',
-      type: 'E-commerce',
+      type: 'Aplikasi catatan',
+      role: 'Desain dan pengembangan',
       description:
-        'A faster, simpler checkout for a small homeware shop. Cut the steps from cart to payment from six to three and lifted mobile conversion.',
-      tags: ['React', 'Stripe', 'Accessibility'],
-      links: { live: 'https://example.com', code: 'https://github.com/' },
-      image: null,
+        'Aplikasi catatan hitam-putih yang tetap jalan tanpa internet. Ada editor Markdown, tag, deadline dengan pengingat, kalender bulanan, dan sinkronisasi antar perangkat. Bisa dipasang sebagai aplikasi desktop maupun aplikasi Android dengan widget.',
+      tags: ['React', 'Supabase', 'PWA', 'Android'],
+      links: { live: null, code: 'https://github.com/indragiriB/monote' },
+      image: '/projects/monote.webp',
+      imageAlt: 'Monote: daftar catatan di kiri dan catatan yang sedang dibaca di kanan',
     },
     {
-      id: 'metrics',
-      title: 'Metrics board',
-      year: '2025',
-      role: 'Frontend',
-      type: 'Dashboard',
+      id: 'rekap-infaq',
+      title: 'Rekap Infaq',
+      year: '2026',
+      type: 'Aplikasi web',
+      role: 'Desain dan pengembangan',
       description:
-        'A live dashboard that turns a noisy event stream into five numbers a support team can act on, with keyboard-first filtering.',
-      tags: ['TypeScript', 'D3', 'WebSockets'],
-      links: { live: 'https://example.com', code: 'https://github.com/' },
-      image: null,
+        'Pencatatan dan rekap infaq bulanan untuk satu komunitas. Pembagian ke kas kelompok dan daerah dihitung otomatis, setiap perubahan tercatat siapa yang mengubahnya, dan laporan siap dikirim lewat WhatsApp.',
+      tags: ['React', 'TypeScript', 'Supabase', 'Tailwind'],
+      links: { live: null, code: 'https://github.com/indragiriB/infaq-app' },
+      image: '/projects/infaq.webp',
+      imageAlt: 'Rekap Infaq: ringkasan jumlah yang belum disetor, saldo kas, dan rincian pembagian',
     },
     {
-      id: 'field-notes',
-      title: 'Field notes',
-      year: '2025',
-      role: 'Solo project',
-      type: 'Web app',
+      id: 'baswara-studio',
+      title: 'Baswara Studio',
+      year: '2026',
+      type: 'Website bisnis',
+      role: 'Desain dan pengembangan',
       description:
-        'An offline-first note-taking app for people who work outdoors. Syncs when the signal comes back and never loses a draft.',
-      tags: ['PWA', 'IndexedDB', 'CSS'],
-      links: { live: 'https://example.com', code: 'https://github.com/' },
-      image: null,
-    },
-    {
-      id: 'transit-map',
-      title: 'Transit map',
-      year: '2024',
-      role: 'Design and development',
-      type: 'Data visualisation',
-      description:
-        'An interactive map of a city’s bus and tram network that answers one question quickly: how do I get there from here?',
-      tags: ['SVG', 'React', 'Open data'],
-      links: { live: 'https://example.com', code: null },
-      image: null,
+        'Website studio foto di Surakarta. Ada galeri 12 foto dengan lightbox yang bisa digeser, daftar harga per kategori, dan formulir yang membuka WhatsApp dengan pesan yang sudah siap dikirim.',
+      tags: ['React', 'TypeScript', 'Vite', 'Responsif'],
+      links: {
+        live: 'https://www.baswarastudio.my.id/',
+        code: 'https://github.com/indragiriB/baswarastudio',
+      },
+      image: '/projects/baswara.png',
+      imageAlt: 'Baswara Studio: halaman depan dengan foto pernikahan dan tombol pesan sesi',
     },
   ],
 
-  // ── About ───────────────────────────────────────────────────
+  // ── Layanan ─────────────────────────────────────────────────
+  services: {
+    meta: '4 layanan',
+    items: [
+      {
+        name: 'Website',
+        text: 'Company profile, landing page, katalog, dan website studio atau portofolio. Cepat dibuka di HP, rapi untuk mesin pencari, dan isinya gampang diganti.',
+        fits: ['Company profile', 'Landing page', 'Katalog', 'Portofolio'],
+      },
+      {
+        name: 'Aplikasi web',
+        text: 'Dashboard, pencatatan, dan alat internal yang menggantikan spreadsheet dan grup chat yang berantakan. Lengkap dengan login, database, dan laporan sesuai alur kerjamu.',
+        fits: ['Pencatatan', 'Rekap dan laporan', 'Login dan hak akses'],
+      },
+      {
+        name: 'Aplikasi HP dan offline',
+        text: 'Aplikasi yang bisa dipasang di HP atau laptop dan tetap bisa dipakai saat sinyal hilang. Untuk Android, aplikasinya bisa dibungkus jadi aplikasi sungguhan.',
+        fits: ['PWA', 'Offline', 'Android'],
+      },
+      {
+        name: 'Redesign dan perawatan',
+        text: 'Website lama yang lambat atau berantakan dirapikan jadi responsif. Kami juga membantu domain, hosting, SSL, dan perbaikan setelah rilis.',
+        fits: ['Redesign', 'Domain dan hosting', 'Perawatan'],
+      },
+    ],
+    process: {
+      title: 'Cara kerja',
+      steps: [
+        { title: 'Ngobrol', text: 'Kamu ceritakan kebutuhan dan tujuannya. Kami bertanya sampai jelas apa yang perlu dibuat.' },
+        { title: 'Proposal', text: 'Ruang lingkup, jadwal, dan biaya ditulis jelas sebelum mulai.' },
+        { title: 'Desain', text: 'Kamu melihat rancangan tampilan dan memberi masukan sebelum dikodekan.' },
+        { title: 'Bangun', text: 'Dikerjakan bertahap. Hasilnya bisa kamu coba di tengah jalan.' },
+        { title: 'Rilis', text: 'Online di domainmu, lalu kami dampingi dan memperbaiki kalau ada yang kurang.' },
+      ],
+    },
+  },
+
+  // ── Tentang ─────────────────────────────────────────────────
   about: {
-    // null shows a placeholder. Or: '/me.jpg' (file in /public).
+    // null = placeholder. Atau: '/tim.webp' (file di /public).
     photo: null,
-    lede: 'I’m a frontend developer who likes work that sits between design and code.',
+    photoAlt: 'Foto tim We Cloud',
+    lede: 'We Cloud adalah studio kecil di Solo yang membuat website dan aplikasi untuk bisnis, komunitas, dan organisasi.',
     paragraphs: [
-      'I’ve spent the last few years building interfaces for small teams and startups, from first sketch to shipped product. I’m happiest when I can own a feature end to end.',
-      'Away from the keyboard you’ll find me on long walks, in secondhand bookshops, or fixing something that wasn’t quite broken.',
+      'Kami suka mengerjakan hal yang dipakai orang setiap hari: situs studio foto, aplikasi catatan, atau alat rekap untuk komunitas. Tiga proyek di atas adalah contohnya.',
+      'Setiap proyek dimulai dari cara kerjamu yang sekarang. Hasilnya dibuat sederhana supaya orang yang jarang memakai teknologi pun bisa langsung memakainya.',
     ],
     facts: [
-      ['Role', 'Frontend developer'],
-      ['Based in', 'City, Country'],
-      ['Experience', '4 years'],
-      ['Languages', 'English'],
-      ['Availability', 'From next month'],
+      ['Berbasis di', 'Solo, Jawa Tengah'],
+      ['Melayani', 'Solo dan seluruh Indonesia'],
+      ['Bahasa', 'Indonesia, English'],
+      ['Balasan', '1 sampai 2 hari kerja'],
+      ['Status', 'Menerima proyek baru'],
     ],
-    // level is 0 to 10
-    skills: [
-      { name: 'React', level: 9 },
-      { name: 'JavaScript', level: 9 },
-      { name: 'CSS', level: 8 },
-      { name: 'TypeScript', level: 7 },
-      { name: 'Accessibility', level: 7 },
-      { name: 'Node.js', level: 5 },
+    techTitle: 'Teknologi',
+    tech: [
+      { name: 'Tampilan', items: ['React', 'TypeScript', 'Vite', 'Tailwind CSS'] },
+      { name: 'Data dan login', items: ['Supabase', 'SQL', 'IndexedDB'] },
+      { name: 'Aplikasi', items: ['PWA', 'Capacitor (Android)'] },
+      { name: 'Rilis', items: ['GitHub Actions', 'GitHub Pages', 'Domain dan SSL'] },
     ],
-    timeline: [
-      {
-        when: '2025 to now',
-        title: 'Frontend developer, Company name',
-        text: 'Leading the design system and the customer dashboard.',
-      },
-      {
-        when: '2023 to 2025',
-        title: 'Junior developer, Studio name',
-        text: 'Shipped marketing sites and web apps for a dozen clients.',
-      },
-      {
-        when: '2022',
-        title: 'BSc Computer Science, University name',
-        text: 'Final project on accessible data visualisation.',
-      },
+    principlesTitle: 'Cara kami bekerja',
+    principles: [
+      { title: 'Cepat dan ringan', text: 'Halaman terbuka cepat di HP dengan sinyal biasa.' },
+      { title: 'Gampang dipakai', text: 'Tampilan jelas untuk orang yang jarang memakai aplikasi.' },
+      { title: 'Gampang diubah', text: 'Teks, harga, dan foto diatur dari satu file, tanpa perlu mengutak-atik kode.' },
+      { title: 'Terbuka', text: 'Kamu tahu apa yang dikerjakan dan berapa biayanya sebelum mulai.' },
     ],
   },
 
-  // ── Contact ─────────────────────────────────────────────────
+  // ── Kontak ──────────────────────────────────────────────────
   contact: {
-    email: 'hello@yourdomain.com',
+    email: 'hello@wecloud.my.id',
+    // Nomor WhatsApp format internasional tanpa + (contoh: 6281234567890).
+    // Kosongkan untuk menyembunyikan tombolnya.
+    whatsapp: '',
+    whatsappText: 'Halo We Cloud, saya ingin bertanya tentang pembuatan website atau aplikasi.',
     blurb:
-      'Have a project, a role, or just a question? Send a message and I’ll reply within a day or two.',
+      'Punya ide website atau aplikasi? Ceritakan singkat kebutuhanmu. Kami balas dalam 1 sampai 2 hari kerja dan bantu menentukan langkah pertamanya.',
+    // href: null = hanya teks (bukan tautan).
     socials: [
-      { label: 'GitHub', handle: '@yourname', href: 'https://github.com/' },
-      { label: 'LinkedIn', handle: 'in/yourname', href: 'https://linkedin.com/' },
-      { label: 'Instagram', handle: '@yourname', href: 'https://instagram.com/' },
-      { label: 'X', handle: '@yourname', href: 'https://x.com/' },
+      { label: 'Lokasi', handle: 'Solo, Jawa Tengah', href: null },
+      { label: 'GitHub', handle: '@indragiriB', href: 'https://github.com/indragiriB' },
     ],
   },
 }

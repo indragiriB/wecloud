@@ -23,7 +23,7 @@ async function copy(text) {
   }
 }
 
-export default function CopyButton({ text, label = 'Copy email' }) {
+export default function CopyButton({ text, ui }) {
   const [state, setState] = useState('idle') // idle | done | failed
   const timer = useRef(0)
   useEffect(() => () => clearTimeout(timer.current), [])
@@ -37,10 +37,10 @@ export default function CopyButton({ text, label = 'Copy email' }) {
   return (
     <>
       <button type="button" className="btn" onClick={onClick}>
-        {state === 'done' ? 'Copied' : state === 'failed' ? 'Copy failed' : label}
+        {state === 'done' ? ui.copied : state === 'failed' ? ui.copyFailed : ui.copy}
       </button>
       <span className="sr-only" role="status">
-        {state === 'done' ? 'Email address copied' : state === 'failed' ? 'Could not copy' : ''}
+        {state === 'done' ? ui.copiedAnnounce : state === 'failed' ? ui.copyFailedAnnounce : ''}
       </span>
     </>
   )
